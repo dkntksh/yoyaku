@@ -64,4 +64,7 @@ Rails.application.configure do
   config.logger = Logger.new(config.paths["log"].first)
   config.logger.formatter = Logger::Formatter.new
   config.logger.datetime_format = "%Y-%m-%d %H:%M:%S"
+
+  config.logger = Logger.new(STDOUT)
+  config.logger.level = Logger::ERROR
 end
