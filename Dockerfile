@@ -16,6 +16,8 @@ RUN curl -sL https://deb.nodesource.com/setup_7.x | bash - && \
 
 RUN mkdir /yoyaku
 
+ENV APP_ROOT /yoyaku
+
 # 作業ディレクトリを/kintaiに指定
 WORKDIR /yoyaku
 
