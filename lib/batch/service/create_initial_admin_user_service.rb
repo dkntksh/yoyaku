@@ -20,7 +20,11 @@ module Batch
           password = SecureRandom.hex(4)
           admin_user.set_password(password)
           # 作成データのログ出力
+          logger.info ""
+          logger.info ""
           logger.info "!!!!!----- create admin user! user_name:root_admin password:#{password} -----!!!!!"
+          logger.info ""
+          logger.info ""
         end
         logger.debug "#{self.class.name}\##{__method__} execute end ---"
       rescue ActiveRecord::RecordInvalid => are
