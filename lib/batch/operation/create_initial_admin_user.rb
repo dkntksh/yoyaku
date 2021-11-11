@@ -16,7 +16,7 @@ module Batch
       end
 
       def logger
-        @logger ||= Logger.new('log/batch/create_inital_admin_user.log')
+        @logger ||= Batch::BatchLogger.logger('create_initial_admin_user')
       end
 
     end
