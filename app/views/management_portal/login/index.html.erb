@@ -1,7 +1,7 @@
 <h1>Management Portal ログイン</h1>
 <%= form_for(:session, url: management_portal_login_login_path) do |f| %>
-  <%= f.label :email %>
-  <%= f.email_field :email %>
+  <%= f.label :name %>
+  <%= f.email_field :name %>
   <%= f.label :password %>
   <%= f.password_field :password %>
   <%= f.submit "Log in" %>
