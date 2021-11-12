@@ -1,0 +1,2 @@
+module ManagementPortal::HomeHelper
+end
