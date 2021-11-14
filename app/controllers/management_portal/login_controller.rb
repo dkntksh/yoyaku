@@ -3,20 +3,24 @@ class ManagementPortal::LoginController < ApplicationController
   end
 
   def login
-    name = params[:name]
+    name = login_params[:name]
     admin_user = AdminUser.where(name: name)
-    if admin_user.nil?
-      @errors = 'ユーザが存在しないか、パスワードが誤っています。'
-      redirect index
-    end
-    password = params[:password]
-    unless admin_user.password == Digest::SHA256.hexdigest(password + admin_user.created_at.to_s)
-      @errors = 'ユーザが存在しないか、パスワードが誤っています。'
-      redirect index
+
+    # パスワードの認証
+    if admin_user.present? && admin_user.authenticate(login_params[:password])
+      session[:user_id] = admin_user.id
+      session[:user_name] = admin_user.name
+    else
+      @error = 'ユーザが存在しないか、パスワードが誤っています。'
+      render :index
     end
 
     # ログイン処理
 
     # home画面へ遷移
+  end
+
+  def login_params
+    params.require(:admin_user).permit(:name, :password)
   end
 end
