@@ -7,9 +7,15 @@ class ManagementPortal::LoginController < ApplicationController
     admin_user = AdminUser.where(name: name)
 
     # パスワードの認証
-    if admin_user.present? && admin_user.authenticate(login_params[:password])
-      session[:user_id] = admin_user.id
-      session[:user_name] = admin_user.name
+    if admin_user.present? 
+      if admin_user.authenticate(login_params[:password])
+        session[:admin_user_id] = admin_user.id
+        session[:admin_user_name] = admin_user.name
+      else
+        admin_user.error
+        @error = 'ユーザが存在しないか、パスワードが誤っています。'
+        render :index
+      end
     else
       @error = 'ユーザが存在しないか、パスワードが誤っています。'
       render :index
@@ -18,6 +24,7 @@ class ManagementPortal::LoginController < ApplicationController
     # ログイン処理
 
     # home画面へ遷移
+    redirect_to home
   end
 
   def login_params
