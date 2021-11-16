@@ -6,5 +6,12 @@ class AdminUser < ApplicationRecord
     self.save!
   end
 
+  # 引数のパスワードで認証を行う
+  def authenticate(arg_password)
+    if Digest::SHA256.hexdigest(arg_password + self.created_at.to_s) == self.password
+      return true
+    end
+    false
+  end
 
 end

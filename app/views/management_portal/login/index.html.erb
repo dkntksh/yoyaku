@@ -1,0 +1,15 @@
+<h1>Management Portal ログイン</h1>
+<% if @error.present? %>
+  <div class = "alert">
+    <ul>
+        <li><%= @error %></li>
+    </ul>
+  </div>
+<% end %>
+<%= form_for(:admin_user, url: management_portal_login_path ,method: :post) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  <%= f.submit "Log in" %>
+<% end %>
