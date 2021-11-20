@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   namespace :management_portal do
-    get 'home', to: 'home#index'
+    get '/', to: 'home#index'
     get 'login', to: 'login#index'
     post 'login', to: 'login#login'
 
