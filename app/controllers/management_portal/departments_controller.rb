@@ -1,4 +1,6 @@
 class ManagementPortal::DepartmentsController < ApplicationController
+  before_action :is_management_portal_login?
+
   def index
   end
 
