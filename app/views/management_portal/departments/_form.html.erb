@@ -1,17 +1,17 @@
-<%= form_with(model: management_portal_department, local: true) do |form| %>
-  <% if management_portal_department.errors.any? %>
+<%= form_with(model: department, local: true) do |form| %>
+  <% if department.present? && department.errors.present? %>
     <div id="error_explanation">
-      <h2><%= pluralize(management_portal_department.errors.count, "error") %> prohibited this management_portal_department from being saved:</h2>
+      <h2><%= pluralize(department.errors.count, "error") %> prohibited this management_portal_department from being saved:</h2>
 
       <ul>
-        <% management_portal_department.errors.full_messages.each do |message| %>
+        <% department.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="actions">
+  <div class="登録">
     <%= form.submit %>
   </div>
 <% end %>

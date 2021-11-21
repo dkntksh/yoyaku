@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Management Portal Departments</h1>
+<h1>組織一覧</h1>
 
 <table>
   <thead>
@@ -10,11 +10,11 @@
   </thead>
 
   <tbody>
-    <% @management_portal_departments.each do |management_portal_department| %>
+    <% @departments.each do |department| %>
       <tr>
-        <td><%= link_to 'Show', management_portal_department %></td>
-        <td><%= link_to 'Edit', edit_management_portal_department_path(management_portal_department) %></td>
-        <td><%= link_to 'Destroy', management_portal_department, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', management_portal_department_path(department.id) %></td>
+        <td><%= link_to 'Edit', edit_management_portal_department_path(department) %></td>
+        <td><%= link_to 'Destroy', management_portal_department_path(department.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
