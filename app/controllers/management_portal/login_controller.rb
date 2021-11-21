@@ -37,7 +37,7 @@ class ManagementPortal::LoginController < ApplicationController
       render :index and return
     end
     # home画面へ遷移
-    redirect_to management_portal_home_path
+    redirect_to management_portal_path
   end
 
   def login_params
