@@ -11,6 +11,17 @@
     </div>
   <% end %>
 
+  <div id='main'>
+    <div>
+      <label>組織名</label>
+      <%= form.text_field :name %>
+    </div>
+    <div>
+      <label>組織コード</label>
+      <%= form.text_field :department_code %>
+    </div>
+  </div>
+
   <div class="登録">
     <%= form.submit %>
   </div>
