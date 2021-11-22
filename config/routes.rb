@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     post 'login', to: 'login#login'
 
     resources :departments
+    resources :department
+    get 'department/new', to: 'department#new'
+    post 'departments/new', to: 'departments#create'
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
