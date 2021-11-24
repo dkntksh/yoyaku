@@ -12,8 +12,15 @@ class ManagementPortal::DepartmentsController < ApplicationController
 
   def create
     begin
-     @departmment = Department.new(department_params)
-     @departmment.save!
+     @department = Department.new(department_params)
+     if @department.valid?
+      Rails.logger.error @department.errors
+      render management_portal_departments_new_path and return
+    end
+     @department.save!
+    rescue ActiveRecord::RecordInvalid
+      Rails.logger.error @department.errors
+      render management_portal_departments_new_path and return
     rescue => e
       Rails.logger.error e.message
       Rails.logger.error e.backtrace
@@ -23,7 +30,7 @@ class ManagementPortal::DepartmentsController < ApplicationController
   end
 
   def edit
-    @departments = Department.find(params[:id])
+    @department = Department.find(params[:id])
   end
 
   def detail
