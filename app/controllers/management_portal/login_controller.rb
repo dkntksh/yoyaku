@@ -18,7 +18,6 @@ class ManagementPortal::LoginController < ApplicationController
       if admin_user.authenticate(login_params[:password])
         # ログイン処理
         session[:admin_user_id] = admin_user.id
-        session[:admin_user_name] = admin_user.name
         admin_user.login_error_count = 0
         admin_user.lock_datetime_to = nil
         admin_user.save!
@@ -38,7 +37,7 @@ class ManagementPortal::LoginController < ApplicationController
       render :index and return
     end
     # home画面へ遷移
-    redirect_to management_portal_home_path
+    redirect_to management_portal_path
   end
 
   def login_params

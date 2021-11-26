@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>組織一覧</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @departments.each do |department| %>
+      <tr>
+        <td><%= link_to 'Show', management_portal_department_path(department.id) %></td>
+        <td><%= link_to 'Edit', edit_management_portal_department_path(department) %></td>
+        <td><%= link_to 'Destroy', management_portal_department_path(department.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '組織を新規登録する', new_management_portal_department_path %>
+<%= link_to 'TOPに戻る', management_portal_path %>
