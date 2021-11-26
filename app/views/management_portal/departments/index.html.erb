@@ -12,9 +12,9 @@
   <tbody>
     <% @departments.each do |department| %>
       <tr>
-        <td><%= link_to 'Show', management_portal_department_path(department.id) %></td>
-        <td><%= link_to 'Edit', edit_management_portal_department_path(department) %></td>
-        <td><%= link_to 'Destroy', management_portal_department_path(department.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '詳細', management_portal_department_path(department.id) %></td>
+        <td><%= link_to '編集', edit_management_portal_department_path(department) %></td>
+        <td><%= link_to '削除', management_portal_department_path(department.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
