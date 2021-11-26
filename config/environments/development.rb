@@ -61,10 +61,8 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   # ログの出力フォーマット修正
-  config.logger = Logger.new(config.paths["log"].first)
+  config.logger = ActiveSupport::Logger.new(config.paths["log"].first)
   config.logger.formatter = Logger::Formatter.new
   config.logger.datetime_format = "%Y-%m-%d %H:%M:%S"
-
-  config.logger = Logger.new(STDOUT)
   config.logger.level = Logger::DEBUG
 end
