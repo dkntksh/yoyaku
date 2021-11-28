@@ -3,7 +3,7 @@ class ManagementPortal::DepartmentsController < ApplicationController
 
   def index
     # TODO:初期表示の取得は要修正
-    @departments = Department.all
+    @departments = Department.without_root.order(id: :asc).page(1).per(20)
   end
 
   def new
