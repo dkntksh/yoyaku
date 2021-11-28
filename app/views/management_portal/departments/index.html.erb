@@ -2,6 +2,7 @@
 
 <h1>組織一覧</h1>
 
+<%= paginate @departments %>
 <table>
   <thead>
     <tr class="header">
@@ -10,8 +11,8 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-
   <tbody>
+    
     <% @departments.each do |department| %>
       <tr class="data">
         <td><%= department.name %></td>
@@ -23,6 +24,7 @@
     <% end %>
   </tbody>
 </table>
+<%= paginate @departments %>
 
 <br>
 
