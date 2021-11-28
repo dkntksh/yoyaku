@@ -4,7 +4,7 @@
 
 <table>
   <thead>
-    <tr>
+    <tr class="header">
       <th>組織名</th>
       <th>組織コード</th>
       <th colspan="3"></th>
@@ -13,7 +13,7 @@
 
   <tbody>
     <% @departments.each do |department| %>
-      <tr>
+      <tr class="data">
         <td><%= department.name %></td>
         <td><%= department.department_code %></td>
         <td><%= link_to '詳細', management_portal_department_path(department.id) %></td>
