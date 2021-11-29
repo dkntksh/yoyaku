@@ -29,10 +29,35 @@ class ManagementPortal::DepartmentsController < ApplicationController
       Rails.logger.error e.backtrace
       render management_portal_departments_new_path and return
     end
-    redirect_to management_portal_departments_path
+    redirect_to management_portal_department_path(@department.id)
   end
 
   def edit
+    @department = Department.find(params[:id])
+  end
+
+  def update
+    begin
+      @department = Department.find_or_initialize_by(id: params[:id])
+      unless @department.update_attributes(department_params)
+       Rails.logger.error 'update valid error'
+       Rails.logger.error @department.errors.full_messages
+       render edit_management_portal_department_path and return
+     end
+     rescue ActiveRecord::RecordInvalid
+       Rails.logger.error 'update ActiveRecord::RecordInvalid error'
+       Rails.logger.error @department.errors
+       render edit_management_portal_department_path and return
+     rescue => e
+       Rails.logger.error 'update other error'
+       Rails.logger.error e.message
+       Rails.logger.error e.backtrace
+       render edit_management_portal_department_path and return
+     end
+     redirect_to management_portal_department_path
+  end
+
+  def show
     @department = Department.find(params[:id])
   end
 
@@ -44,7 +69,7 @@ class ManagementPortal::DepartmentsController < ApplicationController
 
   private
   def department_params
-    params.require(:department).permit(:name, :department_code)
+    params.require(:department).permit(:id, :name, :department_code)
   end
   
 end
