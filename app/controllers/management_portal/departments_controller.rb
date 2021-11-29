@@ -44,7 +44,7 @@ class ManagementPortal::DepartmentsController < ApplicationController
 
   private
   def department_params
-    params.require(:department).permit(:name, :department_code)
+    params.require(:department).permit(:id, :name, :department_code)
   end
   
 end
