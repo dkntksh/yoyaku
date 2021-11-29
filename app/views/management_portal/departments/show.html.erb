@@ -1,4 +1,13 @@
+<h1>組織詳細</h1>
 <p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_management_portal_department_path(@management_portal_department) %> |
+  <div id='main'>
+    <div>
+      <label>組織名</label>
+      <%= @department.name %>
+    </div>
+    <div>
+      <label>組織コード</label>
+      <%= @department.department_code %>
+    </div>
+  </div>
 <%= link_to 'Back', management_portal_departments_path %>
