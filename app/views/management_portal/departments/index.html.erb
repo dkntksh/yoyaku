@@ -1,6 +1,8 @@
-<p id="notice"><%= notice %></p>
 
 <h1>組織一覧</h1>
+<div class="flash-notifications">
+  <%= flash[:notice] %>
+</div>
 
 <%= paginate @departments %>
 <table>
@@ -19,7 +21,7 @@
         <td><%= department.department_code %></td>
         <td><%= link_to '詳細', management_portal_department_path(department.id) %></td>
         <td><%= link_to '編集', edit_management_portal_department_path(department) %></td>
-        <td><%= link_to '削除', management_portal_department_path(department.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '削除', management_portal_department_path(department.id), method: :delete, data: { confirm: '削除してよろしいですか?' } %></td>
       </tr>
     <% end %>
   </tbody>

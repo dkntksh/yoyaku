@@ -64,7 +64,10 @@ class ManagementPortal::DepartmentsController < ApplicationController
   def detail
   end
 
-  def delete
+  def destroy
+    department = Department.find(params[:id])
+    department.destroy
+    redirect_to management_portal_departments_path notice: '組織を削除しました。'
   end
 
   private
