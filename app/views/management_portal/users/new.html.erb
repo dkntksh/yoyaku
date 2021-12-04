@@ -1,2 +1,5 @@
-<h1>ManagementPortal::User#new</h1>
-<p>Find me in app/views/management_portal/user/new.html.erb</p>
+<h1>ユーザ登録</h1>
+
+<%= render 'form', user: @user %>
+
+<%= link_to '戻る', management_portal_users_path %>
