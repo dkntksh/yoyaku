@@ -1,0 +1,39 @@
+<% action = @user.new_record? ? :create : :update %>
+<% button_value = @user.new_record? ? '登録' : '更新' %>
+<%= form_with(model: @user, local: true,:url => {:action => action}) do |form| %>
+  <% if @user.present? && @user.errors.present? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this management_portal_department from being saved:</h2>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div id='main'>
+    <div>
+      <label>所属部署</label>
+      <%= form.collection_select :department, @departments, :id, :name, {prompt: ""} %>
+    </div>
+    <div>
+      <label>ユーザ名</label>
+      <%= form.text_field :name %>
+    </div>
+    <% if action == 'update' %>
+    <div>
+      <label>パスワード</label>
+      <%= form.text_field :department_code %>
+    </div>
+    <% end %>
+    <div>
+      <label>Eメール</label>
+      <%= form.text_field :email %>
+    </div>
+  </div>
+
+  <div class="button">
+    <%= form.submit value: button_value %>
+  </div>
+<% end %>
