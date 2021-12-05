@@ -19,7 +19,8 @@
     <% @users.each do |user| %>
       <tr class="data">
         <td><%= user.name %></td>
-        <td><%= user.user_code %></td>
+        <td><%= user.department.name %></td>
+        <td><%= user.email %></td>
         <td><%= link_to '詳細', management_portal_user_path(user.id) %></td>
         <td><%= link_to '編集', edit_management_portal_user_path(user) %></td>
         <td><%= link_to '削除', management_portal_user_path(user.id), method: :delete, data: { confirm: '削除してよろしいですか?' } %></td>
