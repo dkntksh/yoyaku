@@ -1,2 +1,17 @@
-<h1>ManagementPortal::User#show</h1>
-<p>Find me in app/views/management_portal/user/show.html.erb</p>
+<h1>ユーザ詳細</h1>
+<p id="notice"><%= notice %></p>
+  <div id='main'>
+    <div>
+      <label>ユーザ名</label>
+      <%= @user.name %>
+    </div>
+    <div>
+      <label>パスワード</label>
+      <%= @user.password %>
+    </div>
+    <div>
+      <label>Eメール</label>
+      <%= @user.email %>
+    </div>
+  </div>
+<%= link_to 'Back', management_portal_users_path %>
