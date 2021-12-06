@@ -1,2 +1,5 @@
-<h1>ManagementPortal::User#edit</h1>
-<p>Find me in app/views/management_portal/user/edit.html.erb</p>
+<h1>ユーザ編集</h1>
+
+<%= render 'form', user: @user %>
+
+<%= link_to '戻る', management_portal_users_path %>

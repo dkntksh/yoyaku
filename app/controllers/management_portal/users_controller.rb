@@ -37,6 +37,24 @@ class ManagementPortal::UsersController < ApplicationController
   end
 
   def update
+    begin
+      @user = User.find_or_initialize_by(id: params[:id])
+      unless @user.update_attributes(user_params)
+       Rails.logger.error 'update valid error'
+       Rails.logger.error @user.errors.full_messages
+       render edit_management_portal_user_path and return
+     end
+     rescue ActiveRecord::RecordInvalid
+       Rails.logger.error 'update ActiveRecord::RecordInvalid error'
+       Rails.logger.error @user.errors
+       render edit_management_portal_user_path and return
+     rescue => e
+       Rails.logger.error 'update other error'
+       Rails.logger.error e.message
+       Rails.logger.error e.backtrace
+       render edit_management_portal_user_path and return
+     end
+     redirect_to management_portal_user_path
   end
 
   def show
@@ -46,10 +64,10 @@ class ManagementPortal::UsersController < ApplicationController
   private
 
   def set_form_data
-    @departments = Department.all.order(:name)
+    @departments = Department.all.order(:name)  
   end
 
   def user_params
-    params.require(:user).permit(:id, :name, :password, :department_id, :email)
+    params.require(:user).permit(:id, :name, :password, :department_id, :email, :password)
   end
 end
