@@ -2,12 +2,12 @@
 <p id="notice"><%= notice %></p>
   <div id='main'>
     <div>
-      <label>ユーザ名</label>
-      <%= @user.name %>
+      <label>所属組織</label>
+      <%= @user.department.name %>
     </div>
     <div>
-      <label>パスワード</label>
-      <%= @user.password %>
+      <label>ユーザ名</label>
+      <%= @user.name %>
     </div>
     <div>
       <label>Eメール</label>
