@@ -61,6 +61,12 @@ class ManagementPortal::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def destroy
+    Rails.logger.debug "!!!!!destroy user!!!!!"
+    @user = User.find(params[:id])
+    redirect_to management_portal_users_path
+  end
+
   private
 
   def set_form_data
