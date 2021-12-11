@@ -63,8 +63,9 @@ class ManagementPortal::UsersController < ApplicationController
 
   def destroy
     Rails.logger.debug "!!!!!destroy user!!!!!"
-    @user = User.find(params[:id])
-    redirect_to management_portal_users_path
+    user = User.find(params[:id])
+    user.destroy!
+    redirect_to management_portal_users_path notice: '組織を削除しました。'
   end
 
   private
