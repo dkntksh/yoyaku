@@ -13,6 +13,11 @@ Rails.application.routes.draw do
     resources :user
     get 'user/new', to: 'user#new'
     post 'user/new', to: 'user#create'
+
+    resources :meeting_rooms
+    resources :meeting_room
+    get 'meeting_room/index'
+    get 'meeting_room/new'
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
