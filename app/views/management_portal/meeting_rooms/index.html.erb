@@ -1,2 +1,34 @@
-<h1>ManagementPortal::MeetingRoom#index</h1>
-<p>Find me in app/views/management_portal/meeting_room/index.html.erb</p>
+
+<h1>会議室一覧</h1>
+<div class="flash-notifications">
+  <%= flash[:notice] %>
+</div>
+
+<%= paginate @meeting_rooms %>
+<table>
+  <thead>
+    <tr class="header">
+      <th>会議室名</th>
+      <th>場所</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <% @meeting_rooms.each do |meeting_room| %>
+      <tr class="data">
+        <td><%= meeting_room.name %></td>
+        <td><%= meeting_room.place %></td>
+        <td><%= link_to '詳細', management_portal_meeting_room_path(meeting_room.id) %></td>
+        <td><%= link_to '編集', edit_management_portal_meeting_room_path(meeting_room) %></td>
+        <td><%= link_to '削除', management_portal_meeting_room_path(meeting_room.id), method: :delete, data: { confirm: '削除してよろしいですか?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @meeting_rooms %>
+
+<br>
+
+<%= link_to '組織を新規登録する', new_management_portal_meeting_room_path %>
+<%= link_to 'TOPに戻る', management_portal_path %>
