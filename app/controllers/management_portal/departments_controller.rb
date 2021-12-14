@@ -61,9 +61,6 @@ class ManagementPortal::DepartmentsController < ApplicationController
     @department = Department.find(params[:id])
   end
 
-  def detail
-  end
-
   def destroy
     department = Department.find(params[:id])
     department.destroy
