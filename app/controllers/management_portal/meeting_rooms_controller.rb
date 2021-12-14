@@ -38,6 +38,7 @@ class ManagementPortal::MeetingRoomsController < ApplicationController
   end
 
   def show
+    @meeting_room = MeetingRoom.find(params[:id])
   end
 
   def destroy

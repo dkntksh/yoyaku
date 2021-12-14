@@ -1,2 +1,13 @@
-<h1>ManagementPortal::MeetingRoom#show</h1>
-<p>Find me in app/views/management_portal/meeting_room/show.html.erb</p>
+<h1>会議室詳細</h1>
+<p id="notice"><%= notice %></p>
+  <div id='main'>
+    <div>
+      <label>会議室名</label>
+      <%= @meeting_room.name %>
+    </div>
+    <div>
+      <label>場所</label>
+      <%= @meeting_room.place %>
+    </div>
+  </div>
+<%= link_to 'Back', management_portal_meeting_rooms_path %>

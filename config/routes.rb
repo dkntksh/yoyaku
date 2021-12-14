@@ -16,8 +16,8 @@ Rails.application.routes.draw do
 
     resources :meeting_rooms
     resources :meeting_room
-    get 'meeting_room/index'
-    get 'meeting_room/new'
+    get 'meeting_room/index', to: 'meeting_room#new'
+    post 'meeting_room/new', to: 'meeting_room#create'
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
