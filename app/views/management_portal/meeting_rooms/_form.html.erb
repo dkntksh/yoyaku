@@ -1,0 +1,29 @@
+<% action = meeting_room.new_record? ? :create : :update %>
+<% button_value = meeting_room.new_record? ? '登録' : '更新' %>
+<%= form_with(model: meeting_room, local: true,:url => {:action => action}) do |form| %>
+  <% if meeting_room.present? && meeting_room.errors.present? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(meeting_room.errors.count, "error") %> prohibited this management_portal_meeting_room from being saved:</h2>
+      <ul>
+        <% meeting_room.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div id='main'>
+    <div>
+      <label>会議室名</label>
+      <%= form.text_field :name %>
+    </div>
+    <div>
+      <label>場所</label>
+      <%= form.text_field :place %>
+    </div>
+  </div>
+
+  <div class="button">
+    <%= form.submit value: button_value %>
+  </div>
+<% end %>

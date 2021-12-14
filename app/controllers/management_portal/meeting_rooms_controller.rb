@@ -6,6 +6,7 @@ class ManagementPortal::MeetingRoomsController < ApplicationController
   end
 
   def new
+    @meeting_room = MeetingRoom.new
   end
 
   def create
