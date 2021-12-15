@@ -32,6 +32,7 @@ class ManagementPortal::MeetingRoomsController < ApplicationController
   end
 
   def edit
+    @meeting_room = MeetingRoom.find(params[:id])
   end
 
   def update
