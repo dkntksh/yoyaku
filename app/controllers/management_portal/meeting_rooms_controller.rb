@@ -36,6 +36,25 @@ class ManagementPortal::MeetingRoomsController < ApplicationController
   end
 
   def update
+    begin
+      @meeting_room = MeetingRoom.find_or_initialize_by(id: params[:id])
+      unless @meeting_room.update_attributes(meeting_room_params)
+        Rails.logger.error 'valid error'
+        Rails.logger.error @meeting_room.errors.full_messages
+        render management_portal_meeting_room_new_path and return
+      end
+      @meeting_room.save!
+     rescue ActiveRecord::RecordInvalid
+       Rails.logger.error 'ActiveRecord::RecordInvalid error'
+       Rails.logger.error @meeting_room.errors
+       render management_portal_meeting_room_new_path and return
+     rescue => e
+       Rails.logger.error 'other error'
+       Rails.logger.error e.message
+       Rails.logger.error e.backtrace
+       render management_portal_meeting_room_new_path and return
+     end
+     redirect_to management_portal_meeting_room_path(@meeting_room.id)
   end
 
   def show

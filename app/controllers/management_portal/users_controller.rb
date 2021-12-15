@@ -43,7 +43,7 @@ class ManagementPortal::UsersController < ApplicationController
        Rails.logger.error 'update valid error'
        Rails.logger.error @user.errors.full_messages
        render edit_management_portal_user_path and return
-     end
+      end
      rescue ActiveRecord::RecordInvalid
        Rails.logger.error 'update ActiveRecord::RecordInvalid error'
        Rails.logger.error @user.errors
