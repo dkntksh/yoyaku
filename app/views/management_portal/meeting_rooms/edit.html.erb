@@ -1,2 +1,5 @@
-<h1>ManagementPortal::MeetingRoom#edit</h1>
-<p>Find me in app/views/management_portal/meeting_room/edit.html.erb</p>
+<h1>会議室登録</h1>
+
+<%= render 'form', meeting_room: @meeting_room %>
+
+<%= link_to '戻る', management_portal_meeting_rooms_path %>
