@@ -62,6 +62,10 @@ class ManagementPortal::MeetingRoomsController < ApplicationController
   end
 
   def destroy
+    Rails.logger.debug "!!!!!destroy user!!!!!"
+    meeting_room = MeetingRoom.find(params[:id])
+    meeting_room.destroy!
+    redirect_to management_portal_meeting_rooms_path notice: '会議室を削除しました。'
   end
 
   private
