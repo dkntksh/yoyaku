@@ -1,0 +1,2 @@
+module ManagementPortal::MeetingRoomReservationsHelper
+end
