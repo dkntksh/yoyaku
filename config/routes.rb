@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   namespace :management_portal do
+    resources :meeting_room_reservations
+  end
+  namespace :management_portal do
     get '/', to: 'home#index'
     get 'login', to: 'login#index'
     post 'login', to: 'login#login'

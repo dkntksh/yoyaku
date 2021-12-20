@@ -1,0 +1,2 @@
+class MeetingRoomReservation < ApplicationRecord
+end
