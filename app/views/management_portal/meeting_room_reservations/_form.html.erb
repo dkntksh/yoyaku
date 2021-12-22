@@ -13,6 +13,33 @@
     </div>
   <% end %>
 
+  <div id='main'>
+    <div>
+      <label>会議室</label>
+      <%= form.collection_select(:meeting_room_id, @department_select, :id,:name, {}, {}) %>
+    </div>
+    <div>
+      <label>予約者</label>
+      <%= form.text_field :reserve_user_id %>
+    </div>
+    <div>
+      <label>人数</label>
+      <%= form.text_field :number_of_people %>
+    </div>
+    <div>
+      <label>備考</label>
+      <%= form.text_field :memo %>
+    </div>
+    <div>
+      <label>予約者</label>
+      <%= form.text_field :start_reserve_date_time %>
+    </div>
+    <div>
+      <label>予約者</label>
+      <%= form.text_field :end_reserve_date_time %>
+    </div>
+  </div>
+
   <div class="actions">
     <%= form.submit value: button_value %>
   </div>
