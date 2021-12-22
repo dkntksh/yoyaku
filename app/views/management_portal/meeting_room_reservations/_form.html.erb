@@ -20,7 +20,7 @@
     </div>
     <div>
       <label>予約者</label>
-      <%= form.text_field :reserve_user_id %>
+      <%= form.collection_select(:reserve_user_id, @user_select, :id,:name, {}, {}) %>
     </div>
     <div>
       <label>人数</label>
@@ -31,12 +31,12 @@
       <%= form.text_field :memo %>
     </div>
     <div>
-      <label>予約者</label>
-      <%= form.text_field :start_reserve_date_time %>
+      <label>予約開始日時</label>
+      <%= form.datetime_select :start_reserve_date_time %>
     </div>
     <div>
-      <label>予約者</label>
-      <%= form.text_field :end_reserve_date_time %>
+      <label>予約終了日時</label>
+      <%= form.datetime_select :end_reserve_date_time %>
     </div>
   </div>
 

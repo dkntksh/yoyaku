@@ -71,5 +71,6 @@ class ManagementPortal::MeetingRoomReservationsController < ApplicationControlle
 
     def set_select_data
       @meeting_room_select = MeetingRoom.order(id: :asc)
+      @user_select = User.order(id: :asc)
     end
 end
