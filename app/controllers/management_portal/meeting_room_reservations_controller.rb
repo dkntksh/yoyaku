@@ -70,6 +70,6 @@ class ManagementPortal::MeetingRoomReservationsController < ApplicationControlle
     end
 
     def set_select_data
-      @department_select = Department.without_root.order(id: :asc)
+      @meeting_room_select = MeetingRoom.order(id: :asc)
     end
 end
