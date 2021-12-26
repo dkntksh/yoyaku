@@ -20,5 +20,10 @@ module Yoyaku
     # libのパスを追加
     config.paths.add 'lib', eager_load: true #これを追加
     config.autoload_paths << Rails.root.join("lib")
+
+    config.time_zone = 'Tokyo'
+
+    # 日本語をデフォルトとする
+    config.i18n.default_locale = :ja
   end
 end

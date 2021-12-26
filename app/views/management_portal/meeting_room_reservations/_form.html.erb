@@ -1,4 +1,6 @@
-<%= form_with(model: meeting_room_reservation, local: true) do |form| %>
+<% action = meeting_room_reservation.new_record? ? :create : :update %>
+<% button_value = meeting_room_reservation.new_record? ? '登録' : '更新' %>
+<%= form_with(model: meeting_room_reservation, local: true, :url => {:action => action}) do |form| %>
   <% if meeting_room_reservation.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(meeting_room_reservation.errors.count, "error") %> prohibited this meeting_room_reservation from being saved:</h2>
@@ -11,7 +13,34 @@
     </div>
   <% end %>
 
+  <div id='main'>
+    <div>
+      <label>会議室</label>
+      <%= form.collection_select(:meeting_room_id, @meeting_room_select, :id,:name, {}, {}) %>
+    </div>
+    <div>
+      <label>予約者</label>
+      <%= form.collection_select(:reserve_user_id, @user_select, :id,:name, {}, {}) %>
+    </div>
+    <div>
+      <label>人数</label>
+      <%= form.text_field :number_of_people %>
+    </div>
+    <div>
+      <label>備考</label>
+      <%= form.text_field :memo %>
+    </div>
+    <div>
+      <label>予約開始日時</label>
+      <%= raw sprintf(form.datetime_select(:start_reserve_date_time, { use_month_numbers: true, start_year: Date.today.year, minute_step: 10, date_separator: '%s', datetime_separator: '%s', time_separator: '%s'}), '年', '月', '日', '時') + '分' %>
+    </div>
+    <div>
+      <label>予約終了日時</label>
+      <%= raw sprintf(form.datetime_select(:end_reserve_date_time, { use_month_numbers: true, start_year: Date.today.year, minute_step: 10, date_separator: '%s', datetime_separator: '%s', time_separator: '%s'}), '年', '月', '日', '時') + '分' %>
+    </div>
+  </div>
+  <br/>
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit value: button_value %>
   </div>
 <% end %>

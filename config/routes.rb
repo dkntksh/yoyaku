@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
   namespace :management_portal do
-    resources :meeting_room_reservations
-  end
-  namespace :management_portal do
     get '/', to: 'home#index'
     get 'login', to: 'login#index'
     post 'login', to: 'login#login'
@@ -21,6 +18,10 @@ Rails.application.routes.draw do
     resources :meeting_room
     get 'meeting_room/index', to: 'meeting_room#new'
     post 'meeting_room/new', to: 'meeting_room#create'
+
+    resources :meeting_room_reservations
+    resources :meeting_room_reservation
+    get 'meeting_room_reservation/new', to: 'meeting_room_reservations#new'
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
