@@ -27,7 +27,7 @@ class ManagementPortal::MeetingRoomReservationsController < ApplicationControlle
 
     respond_to do |format|
       if @meeting_room_reservation.save
-        format.html { redirect_to @meeting_room_reservation, notice: "Meeting room reservation was successfully created." }
+        format.html { redirect_to management_portal_meeting_room_reservation_path(@meeting_room_reservation.id), notice: "Meeting room reservation was successfully created." }
         format.json { render :show, status: :created, location: @meeting_room_reservation }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -66,7 +66,7 @@ class ManagementPortal::MeetingRoomReservationsController < ApplicationControlle
 
     # Only allow a list of trusted parameters through.
     def meeting_room_reservation_params
-      params.fetch(:meeting_room_reservation, {})
+      params.require(:meeting_room_reservation).permit(:id, :meeting_room_id, :reserve_user_id, :number_of_people, :memo, :start_reserve_date_time, :end_reserve_date_time)
     end
 
     def set_select_data
